@@ -1,8 +1,15 @@
+import React, { useState } from "react";
+import Header from "./components/Header";
+import GameBoard from "./components/GameBoard";
+
 function App() {
+  const [score, setScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
+
   return (
     <div>
-      <div id="title">Memory Game</div>
-      <div id="score_board">Score: High Score: </div>
+      <Header score={score} highestScore={highestScore} />
+      <GameBoard />
     </div>
   );
 }
