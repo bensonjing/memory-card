@@ -5,11 +5,29 @@ import GameBoard from "./components/GameBoard";
 function App() {
   const [score, setScore] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
+
+  const handleClick = (cardName) => {
+    if (!clickedCards.includes(cardName)) {
+      setScore(score + 1);
+      setClickedCards([cardName, ...clickedCards]);
+    } else {
+      if (highestScore < score) {
+        setHighestScore(score);
+        setScore(0);
+        setClickedCards([]);
+      }
+    }
+  };
 
   return (
     <>
       <Header score={score} highestScore={highestScore} />
-      <GameBoard />
+      <GameBoard
+        score={score}
+        highestScore={highestScore}
+        handleClick={handleClick}
+      />
     </>
   );
 }

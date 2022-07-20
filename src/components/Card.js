@@ -7,6 +7,7 @@ export default function Card(props) {
         height: "400px",
         backgroundColor: props.card.backgroundColor,
       }}
+      onClick={props.handleClick}
     >
       <img
         src={props.card.src}

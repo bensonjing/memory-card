@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import boba from "../assets/boba.jpg";
 import chickenRice from "../assets/chicken-rice.png";
@@ -6,12 +6,12 @@ import curry from "../assets/curry.jpg";
 import dimsum from "../assets/dimsum.jpg";
 import hotpot from "../assets/hotpot.jpg";
 import matcha from "../assets/matcha.jpg";
-import ramen from "../assets/curry.jpg";
+import ramen from "../assets/ramen.jpg";
 import sushi from "../assets/sushi.png";
 import takoyaki from "../assets/takoyaki.jpg";
 import zongzi from "../assets/zongzi.jpg";
 
-export default function GameBoard() {
+export default function GameBoard(props) {
   let image = [
     {
       src: boba,
@@ -67,11 +67,24 @@ export default function GameBoard() {
 
   const [cards, setCards] = useState(image);
 
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
+  useEffect(() => {
+    const newCards = [...cards];
+    shuffle(newCards);
+    setCards(newCards);
+  }, [props.score, props.highestScore]);
+
   return (
     <>
       <div id="game_board">
         {cards.map((card) => (
-          <Card card={card} key={card.title} />
+          <Card card={card} key={card.title} handleClick={props.handleClick} />
         ))}
       </div>
     </>
