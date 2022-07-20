@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import GameBoard from "./components/GameBoard";
+import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
