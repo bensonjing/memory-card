@@ -14,9 +14,9 @@ function App() {
     } else {
       if (highestScore < score) {
         setHighestScore(score);
-        setScore(0);
-        setClickedCards([]);
       }
+      setScore(0);
+      setClickedCards([]);
     }
   };
 
