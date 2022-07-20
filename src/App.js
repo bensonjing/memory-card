@@ -7,10 +7,10 @@ function App() {
   const [highestScore, setHighestScore] = useState(0);
 
   return (
-    <div>
+    <>
       <Header score={score} highestScore={highestScore} />
       <GameBoard />
-    </div>
+    </>
   );
 }
 
